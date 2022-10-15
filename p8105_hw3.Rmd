@@ -94,7 +94,29 @@ instacart %>%
 
 ### Problem 2
 
-
+```{r read_and_clean_data_1}
+accel_df = (
+  read_csv(file = "./p8105_hw3_nt2607/data/accel_data.csv") %>% 
+  janitor::clean_names() %>% 
+    mutate(
+      day = as.factor(day)) %>% 
+    pivot_longer(
+      activity_1:activity_1440,
+      names_to = "activity_min",
+      values_to = "activity_count"
+    ) %>% 
+    separate(activity_min, into = c("activity", "activity_min"), sep = "_") %>% 
+    select(-activity) %>% 
+    mutate(activity_min = as.numeric(activity_min)) %>% 
+    mutate(
+    week_type = case_when(
+      day %in% c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday") ~ "Weekday",
+      day %in% c("Saturday", "Sunday") ~ "Weekend",
+      TRUE ~ ""
+    ),
+    day = forcats::fct_relevel(day, c("Monday", "Tuesday", "Wednesday","Thursday", "Friday","Saturday", "Sunday"))
+  ))
+```
 
 
 
