@@ -95,8 +95,7 @@ instacart %>%
 ### Problem 2
 
 ```{r read_and_clean_data_1}
-accel_df = (
-  read_csv(file = "./p8105_hw3_nt2607/data/accel_data.csv") %>% 
+accel_df = read_csv(file = "./data/accel_data.csv") %>% 
   janitor::clean_names() %>% 
     mutate(
       day = as.factor(day)) %>% 
@@ -115,7 +114,8 @@ accel_df = (
       TRUE ~ ""
     ),
     day = forcats::fct_relevel(day, c("Monday", "Tuesday", "Wednesday","Thursday", "Friday","Saturday", "Sunday"))
-  ))
+  )
+```
 ```
 
 
