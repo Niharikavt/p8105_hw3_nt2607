@@ -216,10 +216,10 @@ Make a two-panel plot showing (i) tmax vs tmin for the full dataset (note that a
 ```{r graph_3}
 plot1 = (
   ny_noaa_df %>%
-    drop_na() %>% 
     ggplot(aes(x = tmax, y = tmin)) +
     geom_hex()
     )
+
 plot2 = (
     ny_noaa_df %>% 
     filter(snow < 100) %>% 
