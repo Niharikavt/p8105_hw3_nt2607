@@ -1,0 +1,8 @@
+---
+title: "p8105_hw3_nt2607"
+output: github_document
+date: "2022-10-15"
+---
+
+#### Problem 1
+
